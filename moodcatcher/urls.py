@@ -2,6 +2,6 @@
 from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('moodacatcher.views',
+urlpatterns = patterns('moodcatcher.views',
     url(r'^$', 'home', name='home'),
 )
