@@ -53,7 +53,9 @@ docs/_build/
 # PyBuilder
 target/
 
-moodcatcher/static/node_modules/*
-moodcatcher/static/bower_components/*
+site_moodcatcher/static/node_modules/*
+site_moodcatcher/static/bower_components/*
 
 .idea/*
+
+db.sqlite3
