@@ -60,5 +60,8 @@ site_moodcatcher/static/bower_components/*
 
 db.sqlite3
 
+.project
+.pydevproject
+
 # backup files
 *~
