@@ -1,6 +1,7 @@
 {
-	"name": "moodcatcher",
-	"dependencies": {
-		
-	}
+  "name": "moodcatcher",
+  "devDependencies": {
+    "gulp-jasmine": "^1.0.1",
+    "gulp": "^3.8.8"
+  }
 }
