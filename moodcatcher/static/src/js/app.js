@@ -3,9 +3,9 @@ angular.module('moodcatcher', ['ngRoute'])
 		$routeProvider
 			.when('/', {
 				controller: 'IndexController',
-				templateUrl: 'templates/index.html'
+				templateUrl: '/static/src/templates/index.html'
 			}).when('/history', {
 				controller: 'HistoryController',
-				templateUrl: 'templates/history.html'
+				templateUrl: '/static/src/templates/history.html'
 			});
 	});
