@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+VIRTUAL_ENV = os.environ['VIRTUAL_ENV']
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'moodcatcher',
+    'api',
+
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -87,3 +91,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(VIRTUAL_ENV, 'www', 'media')
+STATIC_ROOT = os.path.join(VIRTUAL_ENV, 'www', 'static')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGINATE_BY': 10
+}
