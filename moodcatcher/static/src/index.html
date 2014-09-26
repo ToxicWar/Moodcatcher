@@ -2,11 +2,24 @@
 <html ng-app="moodcatcher">
 <head>
 	<title>Moodcatcher</title>
-	<script src="../dist/jquery/dist/jquery.min.js"></script>
-	<script src="../dist/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../dist/angular/angular.min.js"></script>
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower_components/angular/angular.min.js"></script>
+	<script src="/bower_components/angular-route/angular-route.min.js"></script>
 	<script src="js/app.js"></script>
-	<link rel="stylesheet" href="../dist/bootstrap/dist/css/bootstrap.min.css"/>
+	<script src="js/index.controller.js"></script>
+	<script src="js/history.controller.js"></script>
+	<script>
+		var data = [
+			{
+				image: '/src/images/bad_mood.png'
+			},
+			{
+				text: 'ok'
+			}
+		];
+	</script>
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
