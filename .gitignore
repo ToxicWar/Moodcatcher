@@ -54,5 +54,6 @@ docs/_build/
 target/
 
 moodcatcher/static/node_modules/*
+moodcatcher/static/bower_components/*
 
 .idea/*
