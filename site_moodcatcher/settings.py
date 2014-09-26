@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'api',
 
     'rest_framework',
+    'guardian',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -82,6 +83,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
+ANONYMOUS_USER_ID = -1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
