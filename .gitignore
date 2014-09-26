@@ -59,3 +59,6 @@ site_moodcatcher/static/bower_components/*
 .idea/*
 
 db.sqlite3
+
+# backup files
+*~
