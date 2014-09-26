@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'moodacatcher',
+    'moodcatcher',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,8 +60,12 @@ WSGI_APPLICATION = 'site_moodcatcher.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'moodcatcher',
+        'USER': 'moodcatcher',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '',
     }
 }
 
