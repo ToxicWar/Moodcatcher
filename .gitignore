@@ -52,3 +52,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+moodcatcher/static/node_modules/*
+
+.idea/*
