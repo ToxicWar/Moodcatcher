@@ -36,6 +36,10 @@ angular.module('moodcatcher')
 		$scope.mood = new Mood({});
 		
 		$scope.upload = function() {
+			if (!$scope.mood.isValid()) {
+				alert("Ну введите хоть что-нибудь!");
+				return;
+			}
 			$modalInstance.close($scope.mood);
 		};
 		$scope.cancel = function() {

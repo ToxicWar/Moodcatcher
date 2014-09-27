@@ -6,6 +6,9 @@ angular.module('moodcatcher')
 		}
 
 		Mood.prototype = {
+			isValid: function() {
+				return this.text || this.image;
+			},
 			save: function () {
 				var fd = new FormData();
 				console.log(this);
