@@ -18,6 +18,10 @@ class MoodSerializer(serializers.HyperlinkedModelSerializer):
                   'posted')
 
     def get_image(self, obj):
+        if self.init_files.has_key('image'):
+            obj.image = self.init_files['image']
+            obj.save()
+
         if obj.image:
             return 'http://localhost:8000/media/{}'.format(obj.image)
         return ''

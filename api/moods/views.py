@@ -10,4 +10,3 @@ class MoodViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
     queryset = Mood.objects.all()
     serializer_class = MoodSerializer
-
