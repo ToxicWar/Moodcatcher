@@ -7,7 +7,7 @@ from rest_framework import serializers
 class MoodSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Mood
-        fields = (
+        fields = ('author'
                   'image',
                   'text',
                   'sound_media',
