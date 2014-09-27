@@ -1,9 +1,14 @@
-angular.module('moodcatcher', ['ngRoute'])
+angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 	.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
 				controller: 'IndexController',
-				templateUrl: '/static/src/templates/index.html'
+				templateUrl: '/static/src/templates/index.html',
+				resolve: {
+					posts: function (MoodsCollection) {
+						return MoodsCollection.get();
+					}
+				}
 			}).when('/history', {
 				controller: 'HistoryController',
 				templateUrl: '/static/src/templates/history.html',
@@ -15,8 +20,8 @@ angular.module('moodcatcher', ['ngRoute'])
 			});
 	})
 	.run(function($rootScope, $location) {
-		$rootScope.$on("$routeChangeError", function() {
-			console.log("failed to change routes");
+		$rootScope.$on("$routeChangeError", function(a, b, c, data) {
+			console.log("failed to change routes", data.message);
 			$location.path("/");
 		});
 	});
