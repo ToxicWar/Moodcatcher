@@ -1,4 +1,4 @@
-angular.module('moodcatcher', ['ngRoute'])
+angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 	.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
