@@ -1,12 +1,14 @@
 angular.module('moodcatcher')
-	.service('Mood', function () {
+	.service('Mood', function ($http) {
 
 		function Mood(attrs) {
 			angular.extend(this, attrs);
 		}
 
 		Mood.prototype = {
-
+			save: function () {
+				$http.post("/api/moods/", this);
+			}
 		};
 
 		return Mood;

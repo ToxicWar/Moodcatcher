@@ -1,6 +1,5 @@
 angular.module('moodcatcher')
-	.controller('IndexController', ['$scope', '$modal', 'posts', function ($scope, $modal, posts) {
-		$scope.posts = data;
+	.controller('IndexController', ['$scope', '$modal', 'posts', '$http', function ($scope, $modal, posts, $http) {
 		
 		$scope.loadMore = function () {
 			posts.next();
@@ -10,12 +9,15 @@ angular.module('moodcatcher')
 			var modalInstance = $modal.open({
 				templateUrl: '/static/src/templates/uploadPopup.html',
 				controller: 'UploadPopupController',
-				size: 'lg',
-				/*resolve: {
-					items: function () {
-						return $scope.items;
-					}
-				}*/
+				size: 'lg'
+			}).result.then(function(mood) {
+				console.log(mood)
+				mood.save();
+//				var obj = {}
+//				var fd = new FormData();
+//				if (data.text) fd.append("text", data.text);
+//				if (data.file) fd.append("image", data.file);//file.name
+//				$http.post("/api/moods/", {text});
 			});
 		};
 		
@@ -23,11 +25,14 @@ angular.module('moodcatcher')
 			
 		};
 	}])
-	.controller('UploadPopupController', ['$scope', function ($scope) {
+	.controller('UploadPopupController', ['$scope', '$modalInstance', 'Mood', function($scope, $modalInstance, Mood) {
+		console.log($modalInstance)
+		$scope.mood = new Mood({});
+		
 		$scope.upload = function() {
-			alert("upload")
+			$modalInstance.close($scope.mood);
 		};
 		$scope.cancel = function() {
-			alert("cancel")
+			$modalInstance.dismiss('cancel');
 		};
 	}]);

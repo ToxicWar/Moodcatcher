@@ -2,8 +2,9 @@
 	<div class="modal-header">
 		<h3 class="modal-title">I'm a modal!</h3>
 	</div>
-	<div class="modal-body">
-		
+	<div class="modal-body" ng-dragenter="dragenter()">
+		<textarea ng-model="mood.text"></textarea>
+		<dragtarget file="mood.image" style="height:128px; position:relative;"></dragtarget>
 	</div>
 	<div class="modal-footer">
 		<button class="btn btn-primary" ng-click="upload()">Upload</button>
