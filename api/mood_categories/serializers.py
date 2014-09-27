@@ -9,5 +9,6 @@ class MoodCategorySerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = MoodCategory
-        fields = ('name',
+        fields = ('id',
+                  'name',
                   'icon')
