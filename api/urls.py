@@ -1,7 +1,7 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from api.auth.views import UserViewSet, AuthView
+from api.auth.views import UserViewSet, AuthView, UserDetail
 from api.history.views import HistoryView
 from api.home.view import HomeViewSet
 from api.mood_categories.views import MoodCategoryViewSet
@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^auth/$', AuthView.as_view(), name='Authorization'),
     url(r'^histories/$', HistoryView.as_view(), name='Histories'),
     url(r'^home/$', HomeViewSet.as_view(), name='Home'),
+    url(r'^user/(?P<slug>me)/$', UserDetail.as_view(), name='UserMeDetail'),
 ]
