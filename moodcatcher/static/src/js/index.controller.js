@@ -1,6 +1,10 @@
 angular.module('moodcatcher')
-	.controller('IndexController', ['$scope', '$modal', function ($scope, $modal) {
+	.controller('IndexController', ['$scope', '$modal', 'posts', function ($scope, $modal, posts) {
 		$scope.posts = data;
+		
+		$scope.loadMore = function () {
+			posts.next();
+		};
 		
 		$scope.addMood = function() {
 			var modalInstance = $modal.open({
@@ -13,7 +17,11 @@ angular.module('moodcatcher')
 					}
 				}*/
 			});
-		}
+		};
+		
+		$scope.getMood = function () {
+			
+		};
 	}])
 	.controller('UploadPopupController', ['$scope', function ($scope) {
 		$scope.upload = function() {
