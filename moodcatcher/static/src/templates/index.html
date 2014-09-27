@@ -1,16 +1,5 @@
 <div class="posts-list">
-	<div ng-repeat="post in posts.items" class="post col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		<div class="post-content">
-			<div ng-if="post.image">
-				<img src="{{ post.image }}"/>
-			</div>
-			<div ng-if="post.text">
-				<p>
-					{{ post.text }}
-				</p>
-			</div>
-		</div>
-	</div>
+	<mood mood="mood" ng-repeat="mood in moodsCollection.items"></mood>
 </div>
 <div class="posts-more">
 	<a class="posts-more-link" ng-click="loadMore()"> ... </a>

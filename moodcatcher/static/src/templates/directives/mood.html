@@ -1,0 +1,12 @@
+<div class="post col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	<div class="post-content">
+		<div ng-if="post.image">
+			<img ng-src="post.image"/>
+		</div>
+		<div ng-if="post.text">
+			<p>
+				{{ post.text }}
+			</p>
+		</div>
+	</div>
+</div>
