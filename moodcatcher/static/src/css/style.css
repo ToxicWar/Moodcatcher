@@ -38,3 +38,6 @@ footer {
 	padding: 10px;
 }
 
+.drag-over {
+	outline: 1px solid;
+}
