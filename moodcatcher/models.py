@@ -42,7 +42,7 @@ class Mood(models.Model):
     author = models.ForeignKey(User, verbose_name=_('Author'),
                                related_name='moods', null=True, blank=True)
     category = models.ForeignKey(MoodCategory, verbose_name=_('Category'),
-                                 related_name='category')
+                                 related_name='category', null=True)
     
     image = models.ImageField(_('Image'), null=True, blank=True, upload_to=upload_to)
     text = models.CharField(_('Text'), max_length=1000, null=True, blank=True)
