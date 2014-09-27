@@ -5,8 +5,8 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				controller: 'IndexController',
 				templateUrl: '/static/src/templates/index.html',
 				resolve: {
-					posts: function (MoodsCollection) {
-						return [];//MoodsCollection.get();
+					moodsCollection: function (MoodsCollection) {
+						return MoodsCollection.get();
 					}
 				}
 			}).when('/history', {
@@ -17,6 +17,14 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 						return $http.get("/api/users");
 					}
 				}
+			}).when('/moods/category/:category', {
+				controller: 'CategoryController',
+				templateUrl: '/static/src/templates/randomMoodByCategory.html',
+				resolve: {
+					mood: function (RandomMoodByCategory, $route) {
+						return RandomMoodByCategory.get($route.current.params.category);
+					}
+				}
 			});
 	})
 	.run(function($rootScope, $location) {
@@ -24,6 +32,18 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 			console.log("failed to change routes", data.message);
 			$location.path("/");
 		});
+	})
+	.directive('mood', function () {
+		return {
+			templateUrl: '/static/src/templates/directives/mood.html',
+			scope: {
+				mood: '='
+			},
+			replace: true,
+			link: function (scope, elem, attrs) {
+
+			}
+		};
 	})
 	.directive('dragtarget', function() {
 		return {
@@ -35,7 +55,6 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				file: '='
 			},
 			link: function($scope, elem, attrs) {
-				
 				elem.on('dragover', function() {
 					$(this).addClass('drag-over');
 					return false;
@@ -56,13 +75,12 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 					var reader = new FileReader();
 					reader.onload = function(e) {
 						img.src = e.target.result;
-						$scope.file = img.src;
-						$scope.$digest();
 					};
 					reader.readAsDataURL(files[0]);
+
+					$scope.file = files[0];
+					$scope.$digest();
 				});
-				//elem[0].ondrop = function(e){ debugger }
-				//console.log($scope, elem, attrs, elem[0])
 			}
 		}
 	});

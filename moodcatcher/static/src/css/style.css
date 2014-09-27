@@ -41,3 +41,10 @@ footer {
 .drag-over {
 	outline: 1px solid;
 }
+.mood-category {
+	width: 128px;
+	height: 128px;
+	float: left;
+
+	cursor: pointer;
+}
