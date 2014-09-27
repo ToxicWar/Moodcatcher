@@ -15,8 +15,7 @@ angular.module('moodcatcher')
 				return $http.post("/api/auth/", this);
 			},
 			logout: function () {
-				console.log(this);
-				return $http.delete("/api/auth/", this);
+				return $http.delete("/api/auth/");
 			}
 		};
 

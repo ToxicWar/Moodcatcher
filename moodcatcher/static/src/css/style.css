@@ -11,17 +11,35 @@
 	min-height: 200px;
 }
 
-.post {
+.posts-more {
+	clear: both;
+}
+
+.posts-more-link {
+	float: right;
+	display: inline-block;
+}
+
+.mood {
 	height: 200px;
 }
 
-.post-content {
+.mood-image img {
+	width: 100%;
+	height: 100%;
+}
+
+.mood-content {
 	margin: 5%;
 	padding: 5%;
 	width: 80%;
 	height: 80%;
 	border: 1px solid;
 	border-radius: 5px;
+
+
+	position: relative;
+	overflow: hidden;
 }
 
 footer {
@@ -47,4 +65,8 @@ footer {
 	float: left;
 
 	cursor: pointer;
+}
+
+.controls {
+	clear: both;
 }

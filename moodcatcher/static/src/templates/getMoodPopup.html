@@ -4,11 +4,10 @@
 	</div>
 	<div class="modal-body">
 		<div class="row categories-list">
-			<div
-				ng-click="chooseCategory(category)"
+			<div ng-click="chooseCategory(category)"
 				ng-repeat="(category, name) in categories"
 				class="mood-category"
-				ng-style="{ backgroundImage: 'url(/static/src/images/categories/' + category + '.png)' }"
+				category="category"
 			    title="{{name}}"
 			></div>
 		</div>

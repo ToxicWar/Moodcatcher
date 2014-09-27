@@ -28,6 +28,7 @@
 			<input type="button" value="Влогиниться" ng-click="login()">
 			<input type="button" value="Вылогиниться" ng-click="logout()">
 		</header>
+		<alert type="error" closable="true">{{ alert }}</alert>
 		<div ng-view class="content"></div>
 		<footer>
 			<ul class="bottom-menu">
