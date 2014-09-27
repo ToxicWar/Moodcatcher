@@ -1,6 +1,5 @@
 # coding: utf-8
 from __future__ import unicode_literals
-from django.contrib.sites.models import Site
 from rest_framework import serializers
 from moodcatcher.models import Mood
 
