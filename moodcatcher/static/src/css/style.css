@@ -1,0 +1,40 @@
+.content {
+	width: 100%;
+	min-height: 200px;
+
+	display: block;
+
+}
+
+.posts-list {
+	width: 100%;
+	min-height: 200px;
+}
+
+.post {
+	height: 200px;
+}
+
+.post-content {
+	margin: 5%;
+	padding: 5%;
+	width: 80%;
+	height: 80%;
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+footer {
+	overflow: auto;
+	width: 100%;
+}
+
+.bottom-menu {
+	list-style: none;
+}
+
+.bottom-menu li {
+	display: inline-block;
+	padding: 10px;
+}
+

@@ -1,7 +1,7 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from api.auth.views import UserViewSet
+from api.auth.views import UserViewSet, AuthView
 from api.moods.views import MoodViewSet
 from api.mood_categories.views import MoodCategoryViewSet
 from django.conf.urls import url, include
@@ -15,5 +15,5 @@ router.register(r'mood_categories', MoodCategoryViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^auth/$', AuthView.as_view(), name='Authorization')
 ]
