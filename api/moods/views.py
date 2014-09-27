@@ -22,12 +22,12 @@ class MoodViewSet(viewsets.ModelViewSet):
         if self.request.QUERY_PARAMS.has_key('category_id'):
             category_id = self.request.QUERY_PARAMS.get('category_id')
 
-            if isinstance(category_id, basestring):
-                query = {'id': category_id}
-            else:
+            try:
+                query = {'pk': int(category_id)}
+            except ValueError as e:
                 query = {'name': category_id}
 
             category = MoodCategory.objects.filter(**query).first()
             moods = Mood.objects.filter(category=category) if category else None
-            return random.choice(moods) if moods else []
+            return [random.choice(moods)] if moods else []
         return super(MoodViewSet, self).get_queryset()
