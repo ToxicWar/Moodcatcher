@@ -15,7 +15,7 @@ angular.module('moodcatcher')
 				this.text && fd.append('text', this.text);
 				this.image && fd.append('image', this.image);
 
-				$http({
+				return $http({
 					url: "/api/moods/",
 					method: "POST",
 					data: fd,

@@ -14,6 +14,7 @@
 	<script src="/static/src/js/history.controller.js"></script>
 	<script src="/static/src/js/randomMoodByCategory.controller.js"></script>
 	<script src="/static/src/js/Mood.service.js"></script>
+	<script src="/static/src/js/User.service.js"></script>
 	<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="/static/src/css/style.css"/>
 </head>
@@ -21,6 +22,10 @@
 	<div class="container">
 		<header>
 			<h1 class="text-center" ng-click="getMood()">Moodcatcher</h1>
+			Лагин: <input type="text" ng-model="user.username">
+			Пороль: <input type="text" ng-model="user.password">
+			<input type="button" value="Врегаться" ng-click="register()">
+			<input type="button" value="Влогиниться" ng-click="login()">
 		</header>
 		<div ng-view class="content"></div>
 		<footer>
