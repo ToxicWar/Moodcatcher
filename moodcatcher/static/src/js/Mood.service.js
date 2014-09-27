@@ -35,12 +35,12 @@ angular.module('moodcatcher')
 			}
 		};
 
-		MoodsCollection.load = function () {
+		MoodsCollection.get = function () {
 			var def = $q.defer();
 
 			MoodsCollection.load(1).success(function (response) {
 				def.resolve(new MoodsCollection(response));
-			}).fail(function () {
+			}).error(function () {
 				def.reject({
 					message: 'Moods can not be loaded.'
 				});
@@ -50,7 +50,7 @@ angular.module('moodcatcher')
 		};
 
 		MoodsCollection.load = function (page) {
-			return $http.get('/moods?page=' + this.page);
+			return $http.get('/moods?page=' + page);
 		};
 
 		return MoodsCollection;
