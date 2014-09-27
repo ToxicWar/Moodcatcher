@@ -22,6 +22,7 @@
 	<div class="container">
 		<header>
 			<h1 class="text-center" ng-click="getMood()">Moodcatcher</h1>
+			{{ currentUser.username }}
 			Лагин: <input type="text" ng-model="user.username">
 			Пороль: <input type="text" ng-model="user.password">
 			<input type="button" value="Врегаться" ng-click="register()">

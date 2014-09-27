@@ -7,6 +7,9 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				resolve: {
 					moodsCollection: function (MoodsCollection) {
 						return MoodsCollection.get();
+					},
+					_currentUser: function (User) {
+						return User.me();
 					}
 				}
 			}).when('/history', {
