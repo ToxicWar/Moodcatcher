@@ -7,9 +7,9 @@ from datetime import datetime
 
 
 class Mood(models.Model):
-    author = models.ForeignKey(User, verbose_name=_('Author'), related_name='moods')
-    image = models.ImageField(_('Image'))
-    text = models.CharField(_('Text'), max_length=1000)
-    sound_media = models.CharField(_('Sound media'), max_length=1000)
+    author = models.ForeignKey(User, verbose_name=_('Author'), related_name='moods', null=True, blank=True)
+    image = models.ImageField(_('Image'), null=True, blank=True)
+    text = models.CharField(_('Text'), max_length=1000, null=True, blank=True)
+    sound_media = models.CharField(_('Sound media'), max_length=1000, null=True, blank=True)
     posted = models.DateTimeField(_('Posted'), default=datetime.now())
-    tags = models.CharField(_('Tags'), max_length=1000)
+    tags = models.CharField(_('Tags'), max_length=1000, null=True, blank=True)
