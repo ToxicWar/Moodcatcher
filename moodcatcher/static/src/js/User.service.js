@@ -13,6 +13,10 @@ angular.module('moodcatcher')
 			login: function () {
 				console.log(this);
 				return $http.post("/api/auth/", this);
+			},
+			logout: function () {
+				console.log(this);
+				return $http.delete("/api/auth/", this);
 			}
 		};
 

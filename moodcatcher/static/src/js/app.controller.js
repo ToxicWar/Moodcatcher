@@ -9,18 +9,21 @@ angular.module('moodcatcher')
 			alert(errs.join('\n'));
 		}
 		
+		
 		$scope.register = function() {
-			var user = $scope.user;
-			console.log(user)
-			user.register().success(function(res) {
+			$scope.user.register().success(function(res) {
 				console.log(res)
 			}).error(alertErr);
 		};
 		
 		$scope.login = function() {
-			var user = $scope.user;
-			console.log(user)
-			user.login().success(function(res) {
+			$scope.user.login().success(function(res) {
+				console.log(res)
+			}).error(alertErr);
+		};
+		
+		$scope.logout = function() {
+			$scope.user.logout().success(function(res) {
 				console.log(res)
 			}).error(alertErr);
 		};
