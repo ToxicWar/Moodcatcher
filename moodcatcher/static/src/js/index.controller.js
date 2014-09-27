@@ -1,6 +1,8 @@
 angular.module('moodcatcher')
 	.controller('IndexController', ['$scope', '$modal', 'moodsCollection', '$http', '$location', function ($scope, $modal, moodsCollection, $http, $location) {
-		
+
+		$scope.moodsCollection = moodsCollection;
+
 		$scope.loadMore = function () {
 			moodsCollection.next();
 		};
@@ -9,6 +11,11 @@ angular.module('moodcatcher')
 			var modalInstance = $modal.open({
 				templateUrl: '/static/src/templates/uploadPopup.html',
 				controller: 'UploadPopupController',
+				resolve: {
+					categories: function (MoodsCollection) {
+						return MoodsCollection.getCategories();
+					}
+				},
 				size: 'lg'
 			}).result.then(function(mood) {
 				mood.save();
@@ -31,9 +38,9 @@ angular.module('moodcatcher')
 		};
 
 	}])
-	.controller('UploadPopupController', ['$scope', '$modalInstance', 'Mood', function($scope, $modalInstance, Mood) {
-		console.log($modalInstance)
+	.controller('UploadPopupController', ['$scope', '$modalInstance', 'Mood', 'categories', function($scope, $modalInstance, Mood, categories) {
 		$scope.mood = new Mood({});
+		$scope.categories = categories;
 		
 		$scope.upload = function() {
 			if (!$scope.mood.isValid()) {
@@ -44,6 +51,10 @@ angular.module('moodcatcher')
 		};
 		$scope.cancel = function() {
 			$modalInstance.dismiss('cancel');
+		};
+
+		$scope.chooseCategory = function (category) {
+			$scope.mood.category = category;
 		};
 	}])
 	.controller('GetMoodPopupController', ['$scope', 'categories', '$modalInstance', '$location',
