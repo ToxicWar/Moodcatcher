@@ -14,7 +14,10 @@ class MoodViewSet(viewsets.ModelViewSet):
     serializer_class = MoodSerializer
 
     def post_save(self, obj, created=False):
-        obj.author = User.objects.get(pk=-1)
+        if self.request.user.is_authenticated():
+            obj.author = self.request.user
+        else:
+            obj.author = User.objects.get(pk=-1)
         obj.save()
         return super(MoodViewSet, self).post_save(obj, created)
 
