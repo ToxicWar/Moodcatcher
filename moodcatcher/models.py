@@ -50,7 +50,7 @@ class Mood(models.Model):
     text = models.CharField(_('Text'), max_length=1000, null=True, blank=True)
     sound_media = models.CharField(_('Sound media'), max_length=1000,
                                    null=True, blank=True)
-    posted = models.DateTimeField(_('Posted'), default=datetime.now())
+    posted = models.DateTimeField(_('Posted'), default=datetime.now(), null=True, blank=True)
     tags = models.CharField(_('Tags'), max_length=1000, null=True, blank=True)
 
     class Meta:

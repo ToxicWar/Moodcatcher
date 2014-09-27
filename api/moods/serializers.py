@@ -18,4 +18,6 @@ class MoodSerializer(serializers.HyperlinkedModelSerializer):
                   'posted')
 
     def get_image(self, obj):
-        return 'http://localhost:8000/media/{}'.format(obj.image)
+        if obj.image:
+            return 'http://localhost:8000/media/{}'.format(obj.image)
+        return ''
