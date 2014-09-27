@@ -1,5 +1,7 @@
-from moodcatcher.models import Mood
+# coding: utf-8
+from __future__ import unicode_literals
 from api.moods.serializers import MoodSerializer
+from moodcatcher.models import Mood
 from rest_framework import viewsets
 
 
