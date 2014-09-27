@@ -32,5 +32,13 @@ class MoodViewSet(viewsets.ModelViewSet):
 
             category = MoodCategory.objects.filter(**query).first()
             moods = Mood.objects.filter(category=category) if category else None
-            return [random.choice(moods)] if moods else []
+            mood = random.choice(moods) if moods else []
+            if mood:
+                if self.request.user.is_authenticated():
+                    mood.received.add(self.request.user)
+                else:
+                    mood.received.add(User.objects.get(pk=-1))
+                mood.save()
+                mood = [mood]
+            return mood
         return super(MoodViewSet, self).get_queryset()
