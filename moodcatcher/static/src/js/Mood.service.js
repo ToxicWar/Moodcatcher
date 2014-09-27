@@ -100,7 +100,7 @@ angular.module('moodcatcher')
 		RandomMoodByCategory.get = function (category) {
 			var def = $q.defer();
 
-			$http.get('/api/moods/getbycategoryid/' + category)
+			$http.get('/api/moods/?category_id=' + category)
 				.success(function (response) {
 					if(!response.results.length) {
 						def.reject({

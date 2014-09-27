@@ -1,5 +1,5 @@
 angular.module('moodcatcher')
-	.controller('AppController', function ($scope, $modal, $http, User) {
+	.controller('AppController', function ($scope, $modal, $http, User, $rootScope) {
 		$scope.user = new User({});
 		
 		function alertErr(err) {
@@ -27,4 +27,12 @@ angular.module('moodcatcher')
 				console.log(res)
 			}).error(alertErr);
 		};
+
+		$scope.alert = '';
+
+		$rootScope.$on("$routeChangeError", function(a, b, c, data) {
+			$scope.alert = data.message;
+			$location.path("/");
+		});
+
 	});

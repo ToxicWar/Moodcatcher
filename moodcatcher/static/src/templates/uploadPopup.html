@@ -5,6 +5,14 @@
 	<div class="modal-body" ng-dragenter="dragenter()">
 		<textarea ng-model="mood.text"></textarea>
 		<dragtarget file="mood.image" style="height:128px; position:relative;"></dragtarget>
+		<div class="row categories-list">
+			<div ng-repeat="(category, name) in categories"
+				ng-click="chooseCategory(category)"
+				category="category"
+				class="mood-category"
+				title="{{name}}"
+				></div>
+		</div>
 	</div>
 	<div class="modal-footer">
 		<button class="btn btn-primary" ng-click="upload()">Upload</button>

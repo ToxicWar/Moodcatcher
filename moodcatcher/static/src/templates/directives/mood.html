@@ -1,11 +1,11 @@
-<div class="post col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	<div class="post-content">
-		<div ng-if="post.image">
-			<img ng-src="post.image"/>
+<div class="mood col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	<div class="mood-content">
+		<div ng-if="mood.image" class="mood-image">
+			<img ng-src="{{mood.image}}"/>
 		</div>
-		<div ng-if="post.text">
+		<div ng-if="mood.text" class="mood-text">
 			<p>
-				{{ post.text }}
+				{{ mood.text }}
 			</p>
 		</div>
 	</div>

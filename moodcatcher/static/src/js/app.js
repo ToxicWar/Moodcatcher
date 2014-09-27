@@ -27,12 +27,6 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				}
 			});
 	})
-	.run(function($rootScope, $location) {
-		$rootScope.$on("$routeChangeError", function(a, b, c, data) {
-			console.log("failed to change routes", data.message);
-			$location.path("/");
-		});
-	})
 	.directive('mood', function () {
 		return {
 			templateUrl: '/static/src/templates/directives/mood.html',
@@ -83,4 +77,18 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				});
 			}
 		}
+	})
+	.directive('category', function () {
+		return {
+			scope: {
+				category: '='
+			},
+			link: function (scope, elem) {
+				elem.on('click', function () {
+					elem.parent().children().removeClass('selected');
+					elem.addClass('selected');
+				});
+				elem.css('backgroundImage', 'url(/static/src/images/categories/' + scope.category + '.png)');
+			}
+		};
 	});
