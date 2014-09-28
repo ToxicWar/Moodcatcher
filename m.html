@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8"/>
+		<title>MC-M</title>
+		<link rel="stylesheet/less" type="text/css" href="css/s.less" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">		
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.sdbr-toggle').on('click',function(){
+					$(this).parent('.sdbr').find('.sdbr-content').toggleClass('open');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="page-surround"><!--page-surround-->
+			<header class="bottom-divider">
+				<div class="container-fluid"><!--container-fluid-->
+
+					<div class="sdbr mood"><!--sbdr-->
+						<div class="sdbr-content">
+							<a href="" class="colors red"></a>
+							<a href="" class="colors orange"></a>
+							<a href="" class="colors yellow"></a>
+							<a href="" class="colors green"></a>
+							<a href="" class="colors violet"></a>
+						</div>
+						<a class="sdbr-toggle">Mood</a>
+					</div><!--/sbdr-->
+
+					<div class="sdbr login"><!--sbdr-->
+						<div class="sdbr-content">
+							<div class="input-group"><label for="l">Login </label><input id="l" type="text" class="inputbox" /></div>
+							<div class="input-group"><label for="p">Password</label><input id="p" type="password" class="inputbox" /></div>
+						</div>
+						<a class="sdbr-toggle">Sign in</a>
+					</div><!--/sbdr-->
+
+					<a href="" class="logo">
+						<img src="img/deer.svg" />
+					</a>
+
+				</div><!--/container-fluid-->
+			</header>
+			<section>
+				<div class="container"><!--container-->
+					<div class="grid-8 push-2"><!--g-->
+						<div class="pic-list col5"><!--big-avatar-list-->
+							<div class="item">
+								<a href="" class="red">
+									<img src="img/cats/cat.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="green">
+									<img src="img/cats/cat-1.jpeg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="yellow">
+									<img src="img/cats/cat-2.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="violet">
+									<img src="img/cats/cat-3.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="orange">
+									<img src="img/cats/cat.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="green">
+									<img src="img/cats/cat-1.jpeg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="red">
+									<img src="img/cats/cat-2.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="violet">
+									<img src="img/cats/cat-3.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="yellow">
+									<img src="img/cats/cat-2.jpg"/>
+								</a>
+							</div>
+							<div class="item">
+								<a href="" class="orange">
+									<img src="img/cats/cat-3.jpg"/>
+								</a>
+							</div>
+
+							<a href="" class="show-more">Show more</a>
+						</div><!--/big-avatar-list-->
+					</div><!--/g-->
+				</div><!--/container-->
+
+				<div class="bottom-divider"></div>
+
+				<div class="container"><!--container-->
+					<div class="grid-8 push-2"><!--g-->
+						<div class="two-buttons"><!--two-buttons-->
+							<div class="grid-5">
+								<button>Принять настроение <i class="fa fa-chevron-right"></i></button>
+							</div>
+							<div class="grid-2">
+								<img src="img/half-deer.svg" />
+							</div>
+							<div class="grid-5">
+								<button><i class="fa fa-chevron-right"></i> Поделиться настроением</button></div>
+							</div><!--/two-buttons-->
+					</div><!--/g-->
+				</div><!--/container-->
+
+			</section>
+		</div><!--/page-surround-->
+		<footer class="top-divider">
+
+		</footer>
+	</body>
+</html>
