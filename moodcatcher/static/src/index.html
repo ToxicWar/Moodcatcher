@@ -45,12 +45,18 @@
 						<a class="sdbr-toggle">Mood</a>
 					</div><!--/sbdr-->
 
-					<div class="sdbr login"><!--sbdr-->
-						<div class="sdbr-content">
-							<div class="input-group"><label for="l">Login </label><input id="l" type="text" class="inputbox" /></div>
-							<div class="input-group"><label for="p">Password</label><input id="p" type="password" class="inputbox" /></div>
+					<div class="sdbr login" ng-init="mode = !currentUser ? 'login' : 'logout'"><!--sbdr-->
+						<div ng-if="mode == 'login'">
+							<div class="sdbr-content">
+								<div class="input-group"><label for="l">Login </label><input id="l" type="text" class="inputbox" /></div>
+								<div class="input-group"><label for="p">Password</label><input id="p" type="password" class="inputbox" /></div>
+							</div>
+							<a class="sdbr-toggle">Sign in</a>
 						</div>
-						<a class="sdbr-toggle">{{ (currentUser ? "Exit" : "Sign in") }}</a>
+
+						<div ng-if="mode == 'logout'">
+
+						</div>
 					</div><!--/sbdr-->
 
 					<a href="" class="logo">
@@ -59,110 +65,35 @@
 
 				</div><!--/container-fluid-->
 			</header>
-			<section>
-				<div class="container"><!--container-->
-					<div class="grid-8 push-2"><!--g-->
-						<div class="pic-list col5"><!--big-avatar-list-->
-							<div class="item">
-								<a href="" class="red">
-									<img src="/static/src/img/cats/cat.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="green">
-									<img src="/static/src/img/cats/cat-1.jpeg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="yellow">
-									<img src="/static/src/img/cats/cat-2.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="violet">
-									<img src="/static/src/img/cats/cat-3.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="orange">
-									<img src="/static/src/img/cats/cat.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="green">
-									<img src="/static/src/img/cats/cat-1.jpeg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="dark-gray">
-									<img src="/static/src/img/cats/cat-2.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="violet">
-									<img src="/static/src/img/cats/cat-3.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="yellow">
-									<img src="/static/src/img/cats/cat-2.jpg"/>
-								</a>
-							</div>
-							<div class="item">
-								<a href="" class="orange">
-									<img src="/static/src/img/cats/cat-3.jpg"/>
-								</a>
-							</div>
-
-							<a href="" class="show-more">Show more</a>
-						</div><!--/big-avatar-list-->
-					</div><!--/g-->
-				</div><!--/container-->
-
-				<div class="bottom-divider"></div>
-
-				<div class="container"><!--container-->
-					<div class="grid-8 push-2"><!--g-->
-						<div class="two-buttons"><!--two-buttons-->
-							<div class="grid-5">
-								<button>Принять настроение <i class="fa fa-chevron-right"></i></button>
-							</div>
-							<div class="grid-2">
-								<img src="/static/src/img/half-deer.svg" />
-							</div>
-							<div class="grid-5">
-								<button class="chevron-left"><i class="fa fa-chevron-right"></i> Поделиться настроением</button></div>
-							</div><!--/two-buttons-->
-					</div><!--/g-->
-				</div><!--/container-->
-
-			</section>
+			<div ng-view></div>
 		</div><!--/page-surround-->
-		<footer class="top-divider">
+		<!--<footer class="top-divider">-->
 
 
 
-			<h1 class="text-center" ng-click="getMood()">Moodcatcher</h1>
-			Привет, {{ (currentUser ? currentUser.username : "Анон") }}!<br>
-			Лагин: <input type="text" ng-model="user.username">
-			Пороль: <input type="text" ng-model="user.password">
-			<input type="button" value="Врегаться" ng-click="register()">
-			<input type="button" value="Влогиниться" ng-click="login()">
-			<input type="button" value="Вылогиниться" ng-click="logout()">
-		<alert type="error" closable="true">{{ alert }}</alert>
-		<div ng-view class="content"></div>
-		<footer>
-			<ul class="bottom-menu">
-				<li>
-					<a href="#/about">About</a>
-				</li>
-				<li>
-					<a href="#/donate">Donate</a>
-				</li>
-			</ul>
+			<!--<h1 class="text-center" ng-click="getMood()">Moodcatcher</h1>-->
+			<!--<div ng-if="currentUser">{{currentUser.username}}</div>-->
+			<!--<div ng-if="!currentUser">---</div>-->
+			<!--Привет, <span class="user-info"></span>!<br>-->
+			<!--Лагин: <input type="text" ng-model="user.username">-->
+			<!--Пороль: <input type="text" ng-model="user.password">-->
+			<!--<input type="button" value="Врегаться" ng-click="register()">-->
+			<!--<input type="button" value="Влогиниться" ng-click="login()">-->
+			<!--<input type="button" value="Вылогиниться" ng-click="logout()">-->
+		<!--<alert type="error" closable="true">{{ alert }}</alert>-->
+		<!--<div ng-view class="content"></div>-->
+		<!--<footer>-->
+			<!--<ul class="bottom-menu">-->
+				<!--<li>-->
+					<!--<a href="#/about">About</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a href="#/donate">Donate</a>-->
+				<!--</li>-->
+			<!--</ul>-->
 
 
 
-		</footer>
+		<!--</footer>-->
 	</body>
 </html>

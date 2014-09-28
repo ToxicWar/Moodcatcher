@@ -1,18 +1,29 @@
-from templates: {{ qwe }}
-<div class="posts-list">
-	<mood mood="mood" ng-repeat="mood in moodsCollection.items"></mood>
-</div>
-<div class="posts-more">
-	<a class="posts-more-link" ng-click="loadMore()"> ... </a>
-</div>
-<div class="controls">
-	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-			<a class="btn-primary btn-block" ng-click="addMood()">+</a>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-			<a class="btn-primary btn-block" ng-click="getMood()">-</a>
-		</div>
-	</div>
-</div>
-<div>{{ (currentUser ? currentUser.username : "asd") }}</div>
+<section>
+	<div class="container"><!--container-->
+		<div class="grid-8 push-2"><!--g-->
+			<div class="pic-list col5"><!--big-avatar-list-->
+				<mood ng-repeat="mood in moodsCollection.items" class="item">
+				</mood>
+				<a href="" ng-click="moodsCollection.next()" class="show-more">Show more</a>
+			</div><!--/big-avatar-list-->
+		</div><!--/g-->
+	</div><!--/container-->
+
+	<div class="bottom-divider"></div>
+
+	<div class="container"><!--container-->
+		<div class="grid-8 push-2"><!--g-->
+			<div class="two-buttons"><!--two-buttons-->
+				<div class="grid-5">
+					<button ng-click="getMood()">Принять настроение <i class="fa fa-chevron-right"></i></button>
+				</div>
+				<div class="grid-2">
+					<img src="/static/src/img/half-deer.svg" />
+				</div>
+				<div class="grid-5">
+					<button ng-click="addMood()" class="chevron-left"><i class="fa fa-chevron-right"></i> Поделиться настроением</button></div>
+			</div><!--/two-buttons-->
+		</div><!--/g-->
+	</div><!--/container-->
+
+</section>

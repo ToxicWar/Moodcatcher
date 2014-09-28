@@ -97,4 +97,32 @@ angular.module('moodcatcher', ['ngRoute'])
 				elem.css('backgroundImage', 'url(/static/src/images/categories/' + scope.category + '.png)');
 			}
 		};
-	});
+	})
+	.directive('header', function($rootScope) {
+		return {
+			restrict: 'E',
+			//transclude: true,
+			//replace: true,
+			link: function($scope, elem, attrs) {
+				$rootScope.$watch('currentUser', function() {
+					var user = $rootScope.currentUser;
+					elem.find('.user-info').text(user ? user.username : " Анон ");
+				});
+			}
+		}
+	})
+	.factory('$popupBuilder', [function () {
+
+		function PopupBuilder() {
+
+		}
+
+		PopupBuilder.prototype = {
+
+		};
+
+		return new PopupBuilder();
+	}])
+	.directive('popup', [function () {
+
+	}])
