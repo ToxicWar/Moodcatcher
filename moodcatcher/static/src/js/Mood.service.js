@@ -19,7 +19,7 @@ angular.module('moodcatcher')
 				this.category && fd.append('category', this.category);
 
 				var def = $q.defer();
-				return $http({
+				$http({
 					url: "/api/moods/",
 					method: "POST",
 					data: fd,
@@ -28,7 +28,7 @@ angular.module('moodcatcher')
 						'Content-Type': undefined
 					}
 				}).success(function (response) {
-					def.resolve(new Mood(response.data));
+					def.resolve(new Mood(response));
 				}).error(function () {
 					def.reject({
 
@@ -58,7 +58,9 @@ angular.module('moodcatcher')
 		MoodsCollection.prototype = {
 			next: function () {
 				return MoodsCollection.load(++this.page).success(function (response) {
-					this.append(response);
+					response.results.forEach(function (item) {
+						this.append(item);
+					}.bind(this));
 				}.bind(this));
 			},
 			append: function (item) {
