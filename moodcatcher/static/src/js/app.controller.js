@@ -1,7 +1,7 @@
 angular.module('moodcatcher')
-	.controller('AppController', function ($scope, $modal, $http, User, $rootScope, $location) {
+	.controller('AppController', function ($scope, $http, User, $rootScope, $location) {
 		$rootScope.currentUser = null;
-		User.me().then(function(u){ $rootScope.currentUser = u; console.log(u); $scope.$digest() });
+		User.me().then(function(u){ $rootScope.currentUser = u; console.log(u) });
 		$scope.user = new User({});
 		
 		function alertErr(err) {

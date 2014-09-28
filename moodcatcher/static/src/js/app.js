@@ -1,4 +1,4 @@
-angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
+angular.module('moodcatcher', ['ngRoute'])
 	.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
@@ -97,17 +97,4 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				elem.css('backgroundImage', 'url(/static/src/images/categories/' + scope.category + '.png)');
 			}
 		};
-	})
-	.directive('header', function($rootScope) {
-		return {
-			restrict: 'E',
-			//transclude: true,
-			//replace: true,
-			link: function($scope, elem, attrs) {
-				$rootScope.$watch('currentUser', function() {
-					var user = $rootScope.currentUser;
-					elem.find('.user-info').text(user ? user.username : " Анон ");
-				});
-			}
-		}
 	});

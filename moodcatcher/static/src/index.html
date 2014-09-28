@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" ng-app="moodcatcher">
 	<head>
 		<meta charset="utf-8"/>
 		<title>Moodcatcher</title>
@@ -29,7 +29,7 @@
 			});
 		</script>
 	</head>
-	<body>
+	<body ng-controller="AppController as app">
 		<div class="page-surround"><!--page-surround-->
 			<header class="bottom-divider">
 				<div class="container-fluid"><!--container-fluid-->
@@ -50,7 +50,7 @@
 							<div class="input-group"><label for="l">Login </label><input id="l" type="text" class="inputbox" /></div>
 							<div class="input-group"><label for="p">Password</label><input id="p" type="password" class="inputbox" /></div>
 						</div>
-						<a class="sdbr-toggle">Sign in</a>
+						<a class="sdbr-toggle">{{ (currentUser ? "Exit" : "Sign in") }}</a>
 					</div><!--/sbdr-->
 
 					<a href="" class="logo">
@@ -143,9 +143,7 @@
 
 
 			<h1 class="text-center" ng-click="getMood()">Moodcatcher</h1>
-			<div ng-if="currentUser">{{currentUser.username}}</div>
-			<div ng-if="!currentUser">---</div>
-			Привет, <span class="user-info"></span>!<br>
+			Привет, {{ (currentUser ? currentUser.username : "Анон") }}!<br>
 			Лагин: <input type="text" ng-model="user.username">
 			Пороль: <input type="text" ng-model="user.password">
 			<input type="button" value="Врегаться" ng-click="register()">

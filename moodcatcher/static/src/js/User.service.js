@@ -18,21 +18,25 @@ angular.module('moodcatcher')
 				def.resolve(null);
 			});
 			return def.promise;
-		}
-		
-		User.prototype = {
-			register: function () {
-				console.log(this);
-				return $http.post("/api/users/", this);
-			},
-			login: function () {
-				console.log(this);
-				return $http.post("/api/auth/", this);
-			},
-			logout: function () {
-				return $http.delete("/api/auth/");
-			}
 		};
+		
+		User.register = function () {
+			console.log(this);
+			return $http.post("/api/users/", this);
+		};
+		
+		User.login = function () {
+			var def = $q.defer();
+			$http.post("/api/auth/", this).success(function (d) {
+				def.resolve(new User(d));
+			}).error(def.reject.bind(def));
+			return def.promise;
+		};
+		User.logout = function () {
+			return $http.delete("/api/auth/");
+		};
+		
+		User.prototype = {};
 
 		return User;
 	});
