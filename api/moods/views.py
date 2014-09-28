@@ -12,7 +12,7 @@ from rest_framework import permissions
 
 class MoodViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
-    queryset = Mood.objects.all()
+    queryset = Mood.objects.all().order_by('-posted')
     serializer_class = MoodSerializer
 
     def post_save(self, obj, created=False):

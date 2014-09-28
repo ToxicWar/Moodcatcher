@@ -24,9 +24,13 @@
 		
 		<script type="text/javascript">
 			$(function() {
-				$('.sdbr-toggle').on('click',function(){
-					$(this).parent('.sdbr').find('.sdbr-content').toggleClass('open');
-				});
+				//$('.sdbr-toggle').on('click',function(){console.log($(this)[0], $(this).parent('.sdbr')[0], $(this).parent('.sdbr').find('.sdbr-content')[0])
+					//$(this).closest('.sdbr').find('.sdbr-content').toggleClass('open');
+				//});
+				//$('#login-box')[0].onkeyup = function (e) {
+				//	if (e.keyCode != 13) return;
+				//	
+				//};
 			});
 		</script>
 	</head>
@@ -36,27 +40,33 @@
 				<div class="container-fluid"><!--container-fluid-->
 
 					<div class="sdbr mood"><!--sbdr-->
-						<div class="sdbr-content">
+						<div class="sdbr-content" ng-class="{ 'open': moodsOpen }">
 							<a href="" class="colors red"></a>
 							<a href="" class="colors orange"></a>
 							<a href="" class="colors yellow"></a>
 							<a href="" class="colors green"></a>
 							<a href="" class="colors violet"></a>
 						</div>
-						<a class="sdbr-toggle">Mood</a>
+						<a class="sdbr-toggle" ng-click="moodsOpen=!moodsOpen">Mood</a>
 					</div><!--/sbdr-->
 
-					<div class="sdbr login" ng-init="mode = !currentUser ? 'login' : 'logout'"><!--sbdr-->
-						<div ng-if="mode == 'login'">
-							<div class="sdbr-content">
-								<div class="input-group"><label for="l">Login </label><input id="l" type="text" class="inputbox" /></div>
-								<div class="input-group"><label for="p">Password</label><input id="p" type="password" class="inputbox" /></div>
+					<div class="sdbr login" ng-init=""><!--sbdr-->
+						<div ng-if="!currentUser.authed">
+							<div class="sdbr-content" ng-class="{ 'open': signinOpen }">
+								<div class="input-group">
+									<label for="login-box">Login </label>
+									<input id="login-box" type="text" class="inputbox" ng-model="currentUser.username" ng-keyup="$event.keyCode==13 && currentUser.login()"/>
+								</div>
+								<div class="input-group">
+									<label for="password-box">Password</label>
+									<input id="password-box" type="password" class="inputbox" ng-model="currentUser.password" ng-keyup="$event.keyCode==13 && currentUser.login()"/>
+								</div>
 							</div>
-							<a class="sdbr-toggle">Sign in</a>
+							<a class="sdbr-toggle" ng-click="signinOpen=!signinOpen">Sign in</a>
 						</div>
 
-						<div ng-if="mode == 'logout'">
-
+						<div ng-if="currentUser.authed">
+							<a class="sdbr-toggle" ng-click="logout()">Exit</a>
 						</div>
 					</div><!--/sbdr-->
 
