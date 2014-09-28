@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from rest_framework import serializers
 from moodcatcher.models import Mood, MoodCategory
+from django.core.files.base import ContentFile
+import base64
 
 
 class MoodSerializer(serializers.HyperlinkedModelSerializer):
@@ -19,6 +21,14 @@ class MoodSerializer(serializers.HyperlinkedModelSerializer):
                   'posted')
 
     def get_image(self, obj):
+        if self.init_data and self.init_data.has_key('image'):
+            image_data = self.init_data.get('image')
+            if isinstance(image_data, basestring) and image_data.startswith('data:image'):
+                format, imgstr = image_data.split(';base64,')
+                ext = format.split('/')[-1]
+                obj.image = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+                obj.save()
+
         if self.init_files and self.init_files.has_key('image'):
             obj.image = self.init_files['image']
             obj.save()
