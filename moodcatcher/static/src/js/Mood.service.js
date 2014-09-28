@@ -1,8 +1,10 @@
 angular.module('moodcatcher')
-	.service('Mood', function ($http) {
+	.service('Mood', function ($http, $q) {
 
 		function Mood(attrs) {
-			angular.extend(this, attrs);
+			angular.extend(this, {
+				category: 'normal'
+			}, attrs);
 		}
 
 		Mood.prototype = {
@@ -11,10 +13,12 @@ angular.module('moodcatcher')
 			},
 			save: function () {
 				var fd = new FormData();
-				console.log(this);
+
 				this.text && fd.append('text', this.text);
 				this.image && fd.append('image', this.image);
+				this.category && fd.append('category', this.category);
 
+				var def = $q.defer();
 				return $http({
 					url: "/api/moods/",
 					method: "POST",
@@ -23,7 +27,18 @@ angular.module('moodcatcher')
 					headers: {
 						'Content-Type': undefined
 					}
+				}).success(function (response) {
+					def.resolve(new Mood(response.data));
+				}).error(function () {
+					def.reject({
+
+					});
 				});
+
+				return def.promise;
+			},
+			getDefaultImage: function () {
+				return '/static/src/img/categories/' + this.category + '.svg';
 			}
 		};
 
@@ -37,6 +52,7 @@ angular.module('moodcatcher')
 			}.bind(this));
 			this.count = response.count;
 			this.page = 1;
+			this.perpage = 12;
 		}
 
 		MoodsCollection.prototype = {
@@ -50,6 +66,9 @@ angular.module('moodcatcher')
 			},
 			createInstance: function (data) {
 				return new Mood(data);
+			},
+			hasMore: function () {
+				return this.page * this.perpage < this.count;
 			}
 		};
 
@@ -68,7 +87,7 @@ angular.module('moodcatcher')
 		};
 
 		MoodsCollection.load = function (page) {
-			return $http.get('/api/moods?page=' + page);
+			return $http.get('/api/moods/?page=' + page);
 		};
 
 		MoodsCollection.getCategories = function () {

@@ -1,14 +1,10 @@
 angular.module('moodcatcher')
-	.controller('IndexController', ['$scope', 'moodsCollection', '$http', '$location', function ($scope, moodsCollection, $http, $location) {
+	.controller('IndexController', function ($scope, $modal, moodsCollection, $http, $location) {
 
 		$scope.moodsCollection = moodsCollection;
 
-		$scope.loadMore = function () {
-			moodsCollection.next();
-		};
-		
-		/*$scope.addMood = function() {
-			var modalInstance = $modal.open({
+		$scope.addMood = function() {
+			$modal.open({
 				templateUrl: '/static/src/templates/uploadPopup.html',
 				controller: 'UploadPopupController',
 				resolve: {
@@ -18,11 +14,13 @@ angular.module('moodcatcher')
 				},
 				size: 'lg'
 			}).result.then(function(mood) {
-				mood.save();
+				mood.save().then(function (mood) {
+					moodsCollection.items.unshift(mood);
+				})
 			});
-		};*/
+		};
 
-		/*$scope.getMood = function () {
+		$scope.getMood = function () {
 			$modal.open({
 				templateUrl: '/static/src/templates/getMoodPopup.html',
 				controller: 'GetMoodPopupController',
@@ -35,40 +33,38 @@ angular.module('moodcatcher')
 			}).result.then(function (category) {
 				$location.path('/moods/category/' + category);
 			});
-		};*/
+		};
 
-	}])
-	.controller('UploadPopupController', ['$scope', 'Mood', 'categories', function($scope, Mood, categories) {
-		$scope.mood = new Mood({});
+	})
+	.controller('UploadPopupController', function($scope, $modalInstance, Mood, categories) {
+		$scope.mood = new Mood({
+			category: 'normal'
+		});
 		$scope.categories = categories;
-		
+
 		$scope.upload = function() {
 			if (!$scope.mood.isValid()) {
 				alert("Ну введите хоть что-нибудь!");
 				return;
 			}
-			//$modalInstance.close($scope.mood);
+			$modalInstance.close($scope.mood);
 		};
 		$scope.cancel = function() {
-			//$modalInstance.dismiss('cancel');
+			$modalInstance.dismiss('cancel');
 		};
 
 		$scope.chooseCategory = function (category) {
 			$scope.mood.category = category;
 		};
-	}])
-	.controller('GetMoodPopupController', ['$scope', 'categories',
-		function ($scope, categories) {
+	})
+	.controller('GetMoodPopupController', function ($scope, categories, $modalInstance) {
 
 		$scope.categories = categories;
 		$scope.chooseCategory = function (category) {
-			//$modalInstance.close(category);
+			$modalInstance.close(category);
 		};
 
 		$scope.cancel = function () {
-			//$modalInstance.dismiss('cancel');
+			$modalInstance.dismiss('cancel');
 		}
-	}])
-	.controller('CategoryController', ['$scope', function ($scope) {
-
-	}]);
+	});

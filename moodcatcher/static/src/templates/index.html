@@ -2,9 +2,8 @@
 	<div class="container"><!--container-->
 		<div class="grid-8 push-2"><!--g-->
 			<div class="pic-list col5"><!--big-avatar-list-->
-				<mood ng-repeat="mood in moodsCollection.items" class="item">
-				</mood>
-				<a href="" ng-click="moodsCollection.next()" class="show-more">Show more</a>
+				<mood mood="mood" ng-repeat="mood in moodsCollection.items" class="item"></mood>
+				<a href="" ng-if="moodsCollection.hasMore()" ng-click="moodsCollection.next()" class="show-more">Show more</a>
 			</div><!--/big-avatar-list-->
 		</div><!--/g-->
 	</div><!--/container-->

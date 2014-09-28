@@ -1,4 +1,4 @@
-angular.module('moodcatcher', ['ngRoute'])
+angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 	.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
@@ -30,18 +30,12 @@ angular.module('moodcatcher', ['ngRoute'])
 				}
 			});
 	})
-	.run(function ($rootScope) {
-		//$rootScope.qwe="wert";
-	})
 	.directive('mood', function () {
 		return {
+			restrict: 'E',
 			templateUrl: '/static/src/templates/directives/mood.html',
 			scope: {
 				mood: '='
-			},
-			replace: true,
-			link: function (scope, elem, attrs) {
-
 			}
 		};
 	})
@@ -68,10 +62,8 @@ angular.module('moodcatcher', ['ngRoute'])
 					$(this).removeClass('drag-over');
 					var files = e.originalEvent.dataTransfer.files;
 					
-					var img = new Image();
-					img.style.width = img.style.height = "100%";
-					elem.append(img);
-					
+					var img = elem.children('img').get(0);
+
 					var reader = new FileReader();
 					reader.onload = function(e) {
 						img.src = e.target.result;
@@ -87,14 +79,28 @@ angular.module('moodcatcher', ['ngRoute'])
 	.directive('category', function () {
 		return {
 			scope: {
-				category: '='
+				category: '=',
+				model: '='
 			},
 			link: function (scope, elem) {
+
+				var img = new Image(),
+					$img = angular.element(img);
+				img.width = 38;
+				img.height = 38;
+				img.src = '/static/src/img/categories/' + scope.category + '.svg';
+				elem.append(img);
+
+				$img.addClass(scope.category);
+
 				elem.on('click', function () {
-					elem.parent().children().removeClass('selected');
-					elem.addClass('selected');
+					elem.parent().children().find('img').removeClass('selected');
+					$img.addClass('selected');
+
+					scope.model = scope.category;
 				});
-				elem.css('backgroundImage', 'url(/static/src/images/categories/' + scope.category + '.png)');
+
+
 			}
 		};
 	})
@@ -111,18 +117,3 @@ angular.module('moodcatcher', ['ngRoute'])
 			}
 		}
 	})
-	.factory('$popupBuilder', [function () {
-
-		function PopupBuilder() {
-
-		}
-
-		PopupBuilder.prototype = {
-
-		};
-
-		return new PopupBuilder();
-	}])
-	.directive('popup', [function () {
-
-	}])

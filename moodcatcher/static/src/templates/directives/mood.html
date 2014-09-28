@@ -1,5 +1,5 @@
 <div class="item">
-	<a href="" ng-class="[ mood.category ]">
-		<img src="{{ mood.image || defaultImage }}"/>
+	<a href="" class="{{mood.category}}">
+		<img ng-src="{{ mood.image || mood.getDefaultImage() }}"/>
 	</a>
 </div>

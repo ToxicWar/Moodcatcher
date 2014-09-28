@@ -1,21 +1,37 @@
-<div>
-	<div class="modal-header">
-		<h3 class="modal-title">I'm a modal!</h3>
+<!--<div>-->
+	<!--<div class="modal-header">-->
+		<!--<h3 class="modal-title">I'm a modal!</h3>-->
+	<!--</div>-->
+	<!--<div class="modal-body" ng-dragenter="dragenter()">-->
+		<!--<textarea ng-model="mood.text"></textarea>-->
+		<!--<dragtarget file="mood.image" style="height:128px; position:relative;"></dragtarget>-->
+		<!--<div class="row categories-list">-->
+			<!--<div ng-repeat="(category, name) in categories"-->
+				<!--ng-click="chooseCategory(category)"-->
+				<!--category="category"-->
+				<!--class="mood-category"-->
+				<!--title="{{name}}"-->
+				<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="modal-footer">-->
+		<!--<button class="btn btn-primary" ng-click="upload()">Upload</button>-->
+		<!--<button class="btn btn-warning" ng-click="cancel()">Cancel</button>-->
+	<!--</div>-->
+<!--</div>-->
+<h2>What is your mood?</h2>
+<a href="" class="image {{ mood.category }}">
+	<dragtarget file="mood.image">
+		<img src="/static/src/img/drag_photo.svg" />
+	</dragtarget>
+</a>
+<div class="modal-form">
+	<textarea ng-model="mood.text"></textarea>
+	<div class="col3" style="height: 45px;">
+		<category class="category" model="mood.category" ng-repeat="(category, name) in categories" category="category"></category>
 	</div>
-	<div class="modal-body" ng-dragenter="dragenter()">
-		<textarea ng-model="mood.text"></textarea>
-		<dragtarget file="mood.image" style="height:128px; position:relative;"></dragtarget>
-		<div class="row categories-list">
-			<div ng-repeat="(category, name) in categories"
-				ng-click="chooseCategory(category)"
-				category="category"
-				class="mood-category"
-				title="{{name}}"
-				></div>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" ng-click="upload()">Upload</button>
-		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	<div class="col3">
+		<div class="item"><a href="" ng-click="upload()">Send</a></div>
+		<div class="item"><a href="" ng-click="cancel()">Cancel</a></div>
 	</div>
 </div>
