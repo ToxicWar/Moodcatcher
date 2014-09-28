@@ -4,5 +4,15 @@ from django.contrib import admin
 from moodcatcher.models import Mood, MoodCategory
 
 
-admin.site.register(Mood, admin.ModelAdmin)
-admin.site.register(MoodCategory, admin.ModelAdmin)
+class MoodAdmin(admin.ModelAdmin):
+    list_display = ['id', 'author', 'category', 'image', 'text', 'posted']
+    list_select_related = True
+    
+
+class MoodCategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'icon']
+    list_select_related = True
+
+
+admin.site.register(Mood, MoodAdmin)
+admin.site.register(MoodCategory, MoodCategoryAdmin)
