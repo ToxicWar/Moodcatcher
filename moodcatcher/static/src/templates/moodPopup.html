@@ -1,0 +1,9 @@
+<h2>Some mood</h2>
+<a href="" class="image {{ mood.category }}">
+	<img ng-src="{{ mood.image || mood.getDefaultImage() }}"/>
+</a>
+<div class="modal-form">
+	<p>
+		{{ mood.text }}
+	</p>
+</div>

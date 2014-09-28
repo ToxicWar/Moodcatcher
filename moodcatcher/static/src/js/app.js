@@ -30,12 +30,22 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				}
 			});
 	})
-	.directive('mood', function () {
+	.directive('mood', function ($modal) {
 		return {
 			restrict: 'E',
 			templateUrl: '/static/src/templates/directives/mood.html',
 			scope: {
 				mood: '='
+			},
+			link: function (scope, elem, attrs) {
+				elem.click(function () {
+					$modal.open({
+						templateUrl: '/static/src/templates/moodPopup.html',
+						controller: function ($scope) {
+							$scope.mood = scope.mood;
+						}
+					});
+				});
 			}
 		};
 	})
