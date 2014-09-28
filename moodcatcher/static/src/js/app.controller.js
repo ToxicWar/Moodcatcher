@@ -1,8 +1,7 @@
 angular.module('moodcatcher')
 	.controller('AppController', function ($scope, $http, User, $rootScope, $location) {
-		$rootScope.currentUser = null;
-		User.me().then(function(u){ $rootScope.currentUser = u; console.log(u) });
-		$scope.user = new User({});
+		$rootScope.currentUser = new User({});
+		$rootScope.currentUser.load().then(function(u){ console.log($rootScope.currentUser) });
 		
 		function alertErr(err) {
 			var errs = [];
@@ -12,21 +11,21 @@ angular.module('moodcatcher')
 		
 		
 		$scope.register = function() {
-			$scope.user.register().success(function(res) {
-				console.log(res)
-			}).error(alertErr);
+			$rootScope.currentUser.register()
+				.success(function(u) {})
+				.error(alertErr);
 		};
 		
 		$scope.login = function() {
-			$scope.user.login().success(function(res) {
-				console.log(res)
-			}).error(alertErr);
+			$rootScope.currentUser.login().then(
+				function(u) {},
+				alertErr);
 		};
 		
 		$scope.logout = function() {
-			$scope.user.logout().success(function(res) {
-				console.log(res)
-			}).error(alertErr);
+			$rootScope.currentUser.logout()
+				.success(function(res) {})
+				.error(alertErr);
 		};
 
 		$scope.alert = '';
