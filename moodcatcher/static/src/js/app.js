@@ -81,12 +81,18 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 
 					var reader = new FileReader();
 					reader.onload = function(e) {
-						img.src = e.target.result;
+						var timg = new Image();
+						timg.src = e.target.result;
+						
+						var canvas = squarifyImage(timg);
+						var url = canvas.toDataURL();
+						img.src = url;
+						
+						//$scope.file = files[0];
+						$scope.file = url;
+						$scope.$digest();
 					};
 					reader.readAsDataURL(files[0]);
-
-					$scope.file = files[0];
-					$scope.$digest();
 				});
 			}
 		}
