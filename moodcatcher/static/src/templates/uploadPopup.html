@@ -7,7 +7,10 @@
 <div class="modal-form">
 	<textarea ng-model="mood.text"></textarea>
 	<div class="col3" style="height: 45px;">
-		<category class="category" model="mood.category" ng-repeat="(category, name) in categories" category="category"></category>
+		<category class="category"
+			model="mood.category"
+			ng-repeat="(category, name) in categories"
+			category="category"></category>
 	</div>
 	<div class="col3">
 		<div class="item"><a href="" ng-click="upload()">Send</a></div>
