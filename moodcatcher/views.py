@@ -1,8 +1,10 @@
 # coding: utf-8
 from __future__ import unicode_literals
-from django.views.generic import TemplateView
+from django.http import HttpResponse
 
 
-class Home(TemplateView):
-    template_name = 'moodcatcher/index.html'
-home = Home.as_view()
+def home(request):
+	f = open('moodcatcher/static/src/index.html', 'r')
+	data = f.read()
+	f.close()
+	return HttpResponse(data)
