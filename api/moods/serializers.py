@@ -24,7 +24,7 @@ class MoodSerializer(serializers.HyperlinkedModelSerializer):
             obj.save()
 
         if obj.image:
-            return 'http://localhost:8000/media/{}'.format(obj.image)
+            return '/media/{}'.format(obj.image)
         return ''
 
     def get_category(self, obj):
