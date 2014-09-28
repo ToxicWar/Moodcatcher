@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8"/>
+		<title>MC-M</title>
+		<link rel="stylesheet/less" type="text/css" href="/static/src/css/s.less" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">		
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/src/js/modal.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.sdbr-toggle').on('click',function(){
+					$(this).parent('.sdbr').find('.sdbr-content').toggleClass('open');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="page-surround"><!--page-surround-->
+			<header class="bottom-divider">
+				<div class="container-fluid"><!--container-fluid-->
+
+					<div class="sdbr mood"><!--sbdr-->
+						<div class="sdbr-content">
+							<a href="" class="colors red"></a>
+							<a href="" class="colors orange"></a>
+							<a href="" class="colors yellow"></a>
+							<a href="" class="colors green"></a>
+							<a href="" class="colors violet"></a>
+						</div>
+						<a class="sdbr-toggle">Mood</a>
+					</div><!--/sbdr-->
+
+					<div class="sdbr login"><!--sbdr-->
+						<div class="sdbr-content">
+							<div class="input-group"><label for="l">Login </label><input id="l" type="text" class="inputbox" /></div>
+							<div class="input-group"><label for="p">Password</label><input id="p" type="password" class="inputbox" /></div>
+						</div>
+						<a class="sdbr-toggle">Sign in</a>
+					</div><!--/sbdr-->
+
+					<a href="" class="logo">
+						<img src="/static/src/img/deer.svg" />
+					</a>
+
+				</div><!--/container-fluid-->
+			</header>
+			<section>
+				<div class="container-fluid pbot col3"><!--container-->
+					<div class="item"><!--g-->
+						<h4 class="small-header">Your mood</h4>
+						<div class="message-list"><!--mlist-->
+							<ul>
+								<li>
+									<a href="" class="image green">
+										<img src="/static/src/img/cats/cat.jpg" />
+									</a>
+									<div class="text">
+										<p>Детройтское техно транслирует невероятный абсолютно сходящийся ряд, при этом, вместо 13 можно взять любую другую константу. </p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a href="" class="image red">
+										<img src="/static/src/img/cats/cat-1.jpeg" />
+									</a>
+									<div class="text">
+										<p>Асинхронное ритмическое поле полифигурно начинает флюгель-горн, что несомненно приведет нас к истине.</p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a href="" class="image orange">
+										<img src="/static/src/img/cats/cat-2.jpg" />
+									</a>
+									<div class="text">
+										<p>Нечетная функция, в первом приближении, стремится к нулю. Глиссандо потенциально. Алеаторика стремительно иллюстрирует райдер, и если в одних голосах или пластах музыкальной ткани сочинения еще продолжаются конструктивно-композиционные процессы предыдущей части, то в других - происходит становление новых.</p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a href="" class="image yellow">
+										<img src="/static/src/img/cats/cat-3.jpg" />
+									</a>
+									<div class="text">
+										<p>Интеграл от функции, обращающейся в бесконечность в изолированной точке, следовательно, основан на тщательном анализе. </p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div class="tac"><a href="" class="show-more">Show more</a></div>
+						</div><!--mlist-->
+					</div><!--/g-->
+					<div class="item"><!--g-->
+						<div class="tac ptop">
+							<img src="/static/src/img/full-deer.png"/>
+						</div>
+						<div class="two-buttons col2"><!--two-buttons-->
+							<div class="item">
+								<button data-toggle="modal" data-target="#mymodal">Принять настроение<i class="fa fa-chevron-right"></i></button>
+							</div>
+							<div class="item">
+								<button data-toggle="modal" data-target="#mymodal"><i class="fa fa-chevron-right"></i>Поделиться настроением</button></div>
+							</div><!--/two-buttons-->
+					</div><!--/g-->
+					<div class="item"><!--g-->
+						<h4 class="small-header">My mood</h4>
+						<div class="message-list"><!--mlist-->
+							<ul>
+								<li>
+									<a href="" class="image green">
+										<img src="/static/src/img/cats/cat.jpg" />
+									</a>
+									<div class="text">
+										<p>Детройтское техно транслирует невероятный абсолютно сходящийся ряд, при этом, вместо 13 можно взять любую другую константу. </p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a href="" class="image red">
+										<img src="/static/src/img/cats/cat-1.jpeg" />
+									</a>
+									<div class="text">
+										<p>Асинхронное ритмическое поле полифигурно начинает флюгель-горн, что несомненно приведет нас к истине.</p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a href="" class="image orange">
+										<img src="/static/src/img/cats/cat-2.jpg" />
+									</a>
+									<div class="text">
+										<p>Нечетная функция, в первом приближении, стремится к нулю. Глиссандо потенциально. Алеаторика стремительно иллюстрирует райдер, и если в одних голосах или пластах музыкальной ткани сочинения еще продолжаются конструктивно-композиционные процессы предыдущей части, то в других - происходит становление новых.</p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a href="" class="image yellow">
+										<img src="/static/src/img/cats/cat-3.jpg" />
+									</a>
+									<div class="text">
+										<p>Интеграл от функции, обращающейся в бесконечность в изолированной точке, следовательно, основан на тщательном анализе. </p>
+										<div class="something">
+											<img src="/static/src/img/something.svg"/>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div class="tac"><a href="" class="show-more">Show more</a></div>
+						</div><!--mlist-->
+					</div><!--/g-->
+				</div><!--/container-->
+
+			</section>
+		</div><!--/page-surround-->
+		<footer class="top-divider">
+			<img class="spying-deer" src="/static/src/img/half-deer.svg"/>
+		</footer>
+
+		<!--modal-->
+		<div class="modal" id="mymodal">
+			<div class="modal-content">
+				<h2>Modal header</h2>
+				<a href="" class="image red"><img src="/static/src/img/cats/cat-3.jpg" /></a>
+				<div class="modal-form">
+					<textarea></textarea>
+					<div class="col3">
+						<div class="item"><a href="">Добавить картинку</a></div>
+						<div class="item"><a href="">Добавить песню</a></div>
+						<div class="item"><a href="">Send mood</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
