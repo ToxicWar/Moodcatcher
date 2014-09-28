@@ -1,8 +1,10 @@
 angular.module('moodcatcher')
-	.controller('AppController', function ($scope, $http, User, $rootScope, $location) {
+	.controller('AppController', function ($scope, $http, User, $rootScope, $location, MoodsCollection) {
 		$rootScope.currentUser = new User({});
 		$rootScope.currentUser.load().then(function(u){ console.log($rootScope.currentUser) });
-		
+
+		$scope.categories = MoodsCollection.getCategories();
+
 		function alertErr(err) {
 			var errs = [];
 			angular.forEach(err, function (vals,key) { errs.push(key+": "+(vals.join ? vals.join(',') : vals)) })
@@ -34,4 +36,8 @@ angular.module('moodcatcher')
 			$scope.alert = data.message;
 			$location.path("/");
 		});
+
+		$scope.filterByCategory = function (category) {
+			$location.path('/category/' + category);
+		}
 	});

@@ -2,7 +2,10 @@
 	<div class="container"><!--container-->
 		<div class="grid-8 push-2"><!--g-->
 			<div class="pic-list col5"><!--big-avatar-list-->
-				<mood mood="mood" ng-repeat="mood in moodsCollection.items" class="item"></mood>
+				<mood mood="mood" ng-repeat="mood in moodsCollection.slice()" class="item"></mood>
+				<div style="text-align: center; width: 100%;" ng-if="moodsCollection.isEmpty()">
+					No moods for the category.
+				</div>
 				<a href="" ng-if="moodsCollection.hasMore()" ng-click="moodsCollection.next()" class="show-more">Show more</a>
 			</div><!--/big-avatar-list-->
 		</div><!--/g-->

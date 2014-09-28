@@ -15,7 +15,6 @@ angular.module('moodcatcher')
 				size: 'lg'
 			}).result.then(function(mood) {
 				mood.save().then(function (mood) {
-					console.log(mood);
 					moodsCollection.items.unshift(mood);
 				})
 			});

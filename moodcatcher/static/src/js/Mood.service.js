@@ -52,7 +52,7 @@ angular.module('moodcatcher')
 			}.bind(this));
 			this.count = response.count;
 			this.page = 1;
-			this.perpage = 12;
+			this.perpage = 10;
 		}
 
 		MoodsCollection.prototype = {
@@ -71,6 +71,12 @@ angular.module('moodcatcher')
 			},
 			hasMore: function () {
 				return this.page * this.perpage < this.count;
+			},
+			slice: function () {
+				return this.items.slice(0, this.page * this.perpage);
+			},
+			isEmpty: function () {
+				return !this.items.length;
 			}
 		};
 
@@ -88,8 +94,24 @@ angular.module('moodcatcher')
 			return def.promise;
 		};
 
-		MoodsCollection.load = function (page) {
-			return $http.get('/api/moods/?page=' + page);
+		MoodsCollection.getFilteredByCategory = function (cat) {
+			var def = $q.defer();
+
+			this.load(1, cat).success(function (response) {
+				def.resolve(new MoodsCollection(response));
+			}).error(function () {
+				def.reject();
+			});
+
+			return def.promise;
+		}
+
+		MoodsCollection.load = function (page, category) {
+			var url = '/api/moods/?page=' + page;
+			if (category) {
+				url += '&category_id=' + category;
+			}
+			return $http.get(url);
 		};
 
 		MoodsCollection.getCategories = function () {
