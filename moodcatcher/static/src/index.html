@@ -44,11 +44,7 @@
 
 					<div class="sdbr mood"><!--sbdr-->
 						<div class="sdbr-content" ng-class="{ 'open': moodsOpen }">
-							<a href="" class="colors red"></a>
-							<a href="" class="colors orange"></a>
-							<a href="" class="colors yellow"></a>
-							<a href="" class="colors green"></a>
-							<a href="" class="colors violet"></a>
+							<category ng-click="filterByCategory(category)" category="category" ng-repeat="(category, name) in categories" class="category"></category>
 						</div>
 						<a class="sdbr-toggle" ng-click="moodsOpen=!moodsOpen">Mood</a>
 					</div><!--/sbdr-->

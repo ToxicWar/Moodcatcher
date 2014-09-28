@@ -7,10 +7,7 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				resolve: {
 					moodsCollection: function (MoodsCollection) {
 						return MoodsCollection.get();
-					}/*,
-					_currentUser: function (User) {
-						return User.me();
-					}*/
+					}
 				}
 			}).when('/history', {
 				controller: 'HistoryController',
@@ -28,7 +25,15 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 						return RandomMoodByCategory.get($route.current.params.category);
 					}
 				}
-			});
+			}).when('/category/:category', {
+				controller: 'IndexController',
+				templateUrl: '/static/src/templates/index.html',
+				resolve: {
+					moodsCollection: function (MoodsCollection, $route) {
+						return MoodsCollection.getFilteredByCategory($route.current.params.category);
+					}
+				}
+			})
 	})
 	.directive('mood', function ($modal) {
 		return {
