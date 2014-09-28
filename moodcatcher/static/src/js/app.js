@@ -104,7 +104,7 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 					$img = angular.element(img);
 				img.width = 38;
 				img.height = 38;
-				img.src = '/static/src/img/categories/' + scope.category + '.svg';
+				img.src = '/static/src/img/categories/' + scope.category + '.png';
 				elem.append(img);
 
 				$img.addClass(scope.category);

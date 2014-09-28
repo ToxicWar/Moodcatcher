@@ -38,7 +38,7 @@ angular.module('moodcatcher')
 				return def.promise;
 			},
 			getDefaultImage: function () {
-				return '/static/src/img/categories/' + this.category + '.svg';
+				return '/static/src/img/categories/' + this.category + '.png';
 			}
 		};
 
