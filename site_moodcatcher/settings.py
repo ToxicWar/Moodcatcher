@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import mimetypes
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 VIRTUAL_ENV = os.environ['VIRTUAL_ENV']
 
@@ -94,6 +95,8 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(VIRTUAL_ENV, 'www', 'media')
 STATIC_ROOT = os.path.join(VIRTUAL_ENV, 'www', 'static')
+
+mimetypes.add_type("image/svg+xml", ".svg", True)
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
