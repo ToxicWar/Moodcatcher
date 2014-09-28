@@ -110,4 +110,19 @@ angular.module('moodcatcher', ['ngRoute', 'ui.bootstrap'])
 				});
 			}
 		}
-	});
+	})
+	.factory('$popupBuilder', [function () {
+
+		function PopupBuilder() {
+
+		}
+
+		PopupBuilder.prototype = {
+
+		};
+
+		return new PopupBuilder();
+	}])
+	.directive('popup', [function () {
+
+	}])

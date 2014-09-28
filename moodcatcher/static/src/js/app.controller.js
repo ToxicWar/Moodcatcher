@@ -35,5 +35,4 @@ angular.module('moodcatcher')
 			$scope.alert = data.message;
 			$location.path("/");
 		});
-
 	});

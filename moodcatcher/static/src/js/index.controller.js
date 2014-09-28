@@ -3,10 +3,6 @@ angular.module('moodcatcher')
 
 		$scope.moodsCollection = moodsCollection;
 
-		$scope.loadMore = function () {
-			moodsCollection.next();
-		};
-		
 		$scope.addMood = function() {
 			var modalInstance = $modal.open({
 				templateUrl: '/static/src/templates/uploadPopup.html',
